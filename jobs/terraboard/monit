@@ -1,0 +1,5 @@
+check process terraboard
+  with pidfile "/var/vcap/sys/run/bpm/terraboard/terraboard.pid"
+  start program "/var/vcap/jobs/bpm/bin/bpm start terraboard"
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop terraboard"
+  group vcap

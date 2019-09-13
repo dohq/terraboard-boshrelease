@@ -1,0 +1,15 @@
+set -eux
+
+source /var/vcap/packages/golang-1.12-linux/bosh/compile.env
+export PATH=/var/vcap/packages/git/bin:$PATH
+
+mkdir $BOSH_INSTALL_TARGET/bin
+
+
+# require higher go 1.12
+export GOPROXY=https://proxy.golang.org
+
+cp -R github.com/camptocamp/terraboard/static ${BOSH_INSTALL_TARGET}/
+cd github.com/camptocamp/terraboard
+go mod init github.com/camptocamp/terraboard
+go build -o $BOSH_INSTALL_TARGET/bin/terraboard

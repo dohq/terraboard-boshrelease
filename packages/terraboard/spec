@@ -1,0 +1,11 @@
+---
+name: terraboard
+
+dependencies:
+- golang-1.12-linux
+- git
+
+files:
+- "**/*.go"
+- "github.com/camptocamp/terraboard/Gopkg.*"
+- "github.com/camptocamp/terraboard/static/*"

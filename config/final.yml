@@ -1,0 +1,6 @@
+name: terraboard
+blobstore:
+  provider: s3
+  options:
+    bucket_name: terraboard-bosh-blobs
+    region: ap-northeast-1
