@@ -11,4 +11,4 @@ export GOPROXY=https://proxy.golang.org
 
 cp -R github.com/camptocamp/terraboard/static ${BOSH_INSTALL_TARGET}/
 cd github.com/camptocamp/terraboard
-go build -o $BOSH_INSTALL_TARGET/bin/terraboard
+go build -ldflags "-linkmode external -extldflags -static -X main.version=0.16.0" -o $BOSH_INSTALL_TARGET/bin/terraboard
