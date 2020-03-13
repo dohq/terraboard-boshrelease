@@ -8,6 +8,7 @@ processes:
   <% if_p("terraboard.no_sync") do %>
   - --no-sync
   <% end %>
+  - --db-sslmode=disable
 
   env:
     AWS_ACCESS_KEY_ID: <%= p("aws.access_key_id") %>
