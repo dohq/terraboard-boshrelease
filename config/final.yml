@@ -3,5 +3,5 @@ blobstore:
   provider: s3
   options:
     bucket_name: terraboard-boshrelease
-    region: ap-northeast-1
-    endpoint: https://s3-ap-northeast-1.amazonaws.com
+    region: us-east-1
+    endpoint: https://s3-us-east-1.amazonaws.com
