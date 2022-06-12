@@ -1,0 +1,34 @@
+name: terraboard
+version: 1.5.0
+commit_hash: 2267ed4
+uncommitted_changes: false
+jobs:
+- name: terraboard
+  version: 3af151a1e7149ec9bc214447d08ea9534fc207549cf01b0450d60af8b3842822
+  fingerprint: 3af151a1e7149ec9bc214447d08ea9534fc207549cf01b0450d60af8b3842822
+  sha1: sha256:a5dd5c56b0174554e548fe9dd105281829d4fef1f1209e0e597424f7092373f0
+  packages:
+  - terraboard
+  - golang-1.12-linux
+packages:
+- name: git
+  version: 763cb42c16b8e1cb575f5be70e3d98ecbf73ebc7
+  fingerprint: 763cb42c16b8e1cb575f5be70e3d98ecbf73ebc7
+  sha1: 224b2e556a97d82faf2d0482d9fba0c2e900b2d6
+  dependencies: []
+- name: golang-1.12-linux
+  version: 29fdb6b4cd6c0fe9fb2d8a2a53e89a040ffa33c33f4b9bfae04f5e16060f1f58
+  fingerprint: 29fdb6b4cd6c0fe9fb2d8a2a53e89a040ffa33c33f4b9bfae04f5e16060f1f58
+  sha1: sha256:2776fe5cdc0068e503e68a977df38f93cf631c8f0125140e4788092cd1f2f663
+  dependencies: []
+- name: terraboard
+  version: 0011688a5c6333a8c83e8bf8d8113990a0a6a12b1c33ba07b1e6ae283c09d639
+  fingerprint: 0011688a5c6333a8c83e8bf8d8113990a0a6a12b1c33ba07b1e6ae283c09d639
+  sha1: sha256:4bfc22c35c2d466ab199e38a62e42df8974e48ac0f8fe52644a29142f17ed6c8
+  dependencies:
+  - golang-1.12-linux
+  - git
+license:
+  version: eefa533b44473426f0d39cb7de4a5de1342863955201ca83ddaefe4a0c96d174
+  fingerprint: eefa533b44473426f0d39cb7de4a5de1342863955201ca83ddaefe4a0c96d174
+  sha1: sha256:ad60aa992c9869132f4e4a9e268d195176395a0a937cb58b61f8a0998de71ac2
