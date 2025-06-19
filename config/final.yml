@@ -1,0 +1,5 @@
+name: terraboard
+blobstore:
+  provider: s3
+  options:
+    bucket_name: terraboard-boshrelease-33578181

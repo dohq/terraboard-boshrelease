@@ -1,0 +1,3 @@
+[submodule "src/github.com/camptocamp/terraboard"]
+	path = src/github.com/camptocamp/terraboard
+	url = https://github.com/camptocamp/terraboard

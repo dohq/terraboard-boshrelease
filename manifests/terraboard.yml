@@ -1,0 +1,71 @@
+---
+name: terraboard
+
+releases:
+- name: terraboard
+  sha1: ((terraboard_sha1))
+  version: ((terraboard_version))
+  url: https://github.com/dohq/terraboard-boshrelease/releases/download/((terraboard_version))/terraboard-boshrelease-((terraboard_version)).tgz
+- name: bpm
+  sha1: ((bpm_sha1))
+  version: ((bpm_version))
+  url: https://bosh.io/d/github.com/cloudfoundry/bpm-release?v=((bpm_version))
+- name: postgres
+  version: ((postgres_version))
+  sha1: ((postgres_sha1))
+  url: https://bosh.io/d/github.com/cloudfoundry/postgres-release?v=((postgres_version))
+
+stemcells:
+- alias: jammy
+  os: ubuntu-jammy
+  version: latest
+
+instance_groups:
+- name: terraboard
+  instances: 1
+  azs: [z1, z2, z3]
+  networks:
+  - name: default
+  vm_type: default
+  persistent_disk: 10240
+  stemcell: jammy
+  jobs:
+  - name: bpm
+    release: bpm
+
+  - name: terraboard
+    release: terraboard
+    properties:
+      aws:
+        access_key_id: ((access_key_id))
+        secret_access_key: ((secret_access_key))
+        s3_bucket: ((s3_bucket))
+        region: ((region))
+      postgresql:
+        host: 127.0.0.1
+        database: terraboard
+        role:
+          name: terraboard
+          password: ((terraboard_db_password))
+
+  - name: postgres
+    release: postgres
+    properties:
+      databases:
+        port: 5432
+        databases:
+        - name: terraboard
+        roles:
+        - name: terraboard
+          password: ((terraboard_db_password))
+
+variables:
+- name: terraboard_db_password
+  type: password
+
+update:
+  canaries: 1
+  max_in_flight: 1
+  serial: true
+  canary_watch_time: 30000-600000
+  update_watch_time: 30000-600000

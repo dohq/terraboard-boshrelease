@@ -1,0 +1,49 @@
+---
+name: terraboard
+
+templates:
+  bpm.yml.erb: config/bpm.yml
+
+packages:
+- terraboard
+- golang-1.24-linux
+
+properties:
+  aws.access_key_id:
+    description: "iam aws access key id"
+  aws.secret_access_key:
+    description: "iam aws access secret key"
+  aws.region:
+    description: "aws s3 region"
+  aws.s3_bucket:
+    description: "Bucket name where tfstate exists"
+  postgresql.host:
+    description: "Database host."
+    default: 127.0.0.1
+  postgresql.database:
+    description: "Database name."
+    default: terraboard
+  postgresql.role.name:
+    description: "Database user."
+    default: terraboard
+  postgresql.role.password:
+    description: "Database passowrd."
+  terraboard.port:
+    description: "Port to listen on."
+    default: 8080
+  terraboard.log_level:
+    description: "Set log level ('debug', 'info', 'warn', 'error', 'fatal', 'panic')"
+  terraboard.log_format:
+    description: "Set log format ('plain', 'json'). (default: plain)"
+  terraboard.base_url:
+    description: "If you need to set a route path for Terraboard, you can set a base URL by passing it as the `BASE_URL` environment variable"
+  terraboard.no_sync:
+    description: "No not sync database."
+  terraboard.dynamodb_table:
+    description: "AWS DynamoDB table for locks."
+  terraboard.key_prefix:
+    description: "AWS Key Prefix."
+  terraboard.file_extension:
+    description: "File extention of state files."
+  terraboard.logout_url:
+    description: "Logout URL."

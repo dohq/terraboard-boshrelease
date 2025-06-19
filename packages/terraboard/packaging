@@ -1,0 +1,9 @@
+set -eux
+
+source /var/vcap/packages/golang-1.24-linux/bosh/compile.env
+
+mkdir $BOSH_INSTALL_TARGET/bin
+
+cp -R github.com/camptocamp/terraboard/static ${BOSH_INSTALL_TARGET}/
+cd github.com/camptocamp/terraboard
+CGO_ENABLED=0 go build -ldflags "-extldflags -static -X main.version=1.0.0" -o $BOSH_INSTALL_TARGET/bin/terraboard

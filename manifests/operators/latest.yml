@@ -1,0 +1,5 @@
+- type: replace
+  path: /releases/name=terraboard
+  value:
+    name: terraboard
+    version: latest

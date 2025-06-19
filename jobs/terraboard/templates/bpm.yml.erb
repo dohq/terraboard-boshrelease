@@ -1,0 +1,49 @@
+---
+processes:
+- name: terraboard
+  executable: /var/vcap/packages/terraboard/bin/terraboard
+  workdir: /var/vcap/packages/terraboard
+  args:
+  - --port=<%= p("terraboard.port") %>
+  <% if_p("terraboard.no_sync") do %>
+  - --no-sync
+  <% end %>
+  - --db-sslmode=disable
+
+  env:
+    AWS_ACCESS_KEY_ID: <%= p("aws.access_key_id") %>
+    AWS_SECRET_ACCESS_KEY: <%= p("aws.secret_access_key") %>
+    AWS_REGION: <%= p("aws.region") %>
+    AWS_BUCKET: <%= p("aws.s3_bucket") %>
+    DB_HOST: <%= p("postgresql.host") %>
+    DB_NAME: <%= p("postgresql.database") %>
+    DB_USER: <%= p("postgresql.role.name") %>
+    DB_PASSWORD: <%= p("postgresql.role.password") %>
+
+  <% if_p("terraboard.log_level") do |v| %>
+    TERRABOARD_LOG_LEVEL: <%= v.to_json %>
+  <% end %>
+
+  <% if_p("terraboard.log_format") do |v| %>
+    TERRABOARD_LOG_FORMAT: <%= v.to_json %>
+  <% end %>
+
+  <% if_p("terraboard.file_extention") do |v| %>
+    AWS_FILE_EXTENSION: <%= v.to_json %>
+  <% end %>
+
+  <% if_p("terraboard.base_url") do |v| %>
+    BASE_URL: <%= v.to_json %>
+  <% end %>
+
+  <% if_p("terraboard.dynamodb_table") do |v| %>
+    AWS_DYNAMODB_TABLE: <% v.to_json %>
+  <% end %>
+
+  <% if_p("terraboard.key_prefix") do |v| %>
+    AWS_KEY_PREFIX: <% v.to_json %>
+  <% end %>
+
+  <% if_p("terraboard.logout_url") do |v| %>
+    TERRABOARD_LOGOUT_URL: <%= v.to_json %>
+  <% end %>
